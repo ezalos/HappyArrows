@@ -26,8 +26,10 @@ class RubikTime:
             add = self.get_input()
             self.handle_move(add)
             print(self)
-        print("Well Played and Happy Birthday Erwan! <3")
-        Screen.wrapper(demo)
+        if args.fireworks == False:
+            print("Well Played and Happy Birthday Erwan! <3")
+        else:
+            Screen.wrapper(demo)
 
     def shuffle(self):
         size = (self.size - 1) ** 2
@@ -114,7 +116,8 @@ if __name__ == "__main__":
     from end import demo
     from asciimatics.screen import Screen
     parser = argparse.ArgumentParser()
-    parser.add_argument("-s", "--size", help="Side size of RubikTime", default=3, type=int)
+    parser.add_argument("-s", "--size", help="Side size of RubikTime", default=5, type=int)
+    parser.add_argument("-f", "--fireworks", help="Display fireworks if victory", action='store_true')
     args = parser.parse_args()
     HappyPuzzle = RubikTime(args.size)
     HappyPuzzle.loop()
