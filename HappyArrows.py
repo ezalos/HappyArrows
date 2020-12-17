@@ -95,14 +95,14 @@ class RubikTime:
                 if col < self.size - 1 and label < (self.size - 1) ** 2:
                     if label == self.current:
                         labels += GREEN + BOLD
-                        labels += "  " + "{nb:{len}}".format(len=max_len, nb=label)
+                    labels += "  " + "{1:<{0}d}".format(max_len, label)
                     if label == self.current:
                         labels += RESET
                     label += 1
             msg += "\n"
             if labels:
                 msg += labels + "\n"
-        msg += "⟳ R" + " " * (self.size * 3 - 6 - 1) + "T↻"
+        msg += "⟳ R" + " " * (self.size * (2 + max_len) - 6 - 1) + "T↻"
         msg += "\n"
         return msg
 
